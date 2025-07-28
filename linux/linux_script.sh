@@ -14,21 +14,21 @@ register() {
     echo -n "Docker image: " && read runner_docker_image
     sudo gitlab-runner register \
       --non-interactive \
-      --url \"$runner_url\" \
-      --token \"$runner_auth_token\" \
-      --executor \"$runner_exec\" \
+      --url "$runner_url" \
+      --token "$runner_auth_token" \
+      --executor "$runner_exec" \
       --docker-image $runner_docker_image \
-      --description \"$runner_description\"
+      --description "$runner_description"
 
   elif [ "$runner_exec" = "shell" ]; then
     echo "Using $runner_exec as executor"
 
     sudo gitlab-runner register \
       --non-interactive \
-      --url \"$runner_url\" \
-      --token \"$runner_auth_token\" \
-      --executor \"$runner_exec\" \
-      --description \"$runner_description\"
+      --url "$runner_url" \
+      --token "$runner_auth_token" \
+      --executor "$runner_exec" \
+      --description "$runner_description"
 
   else
     echo "Not supported"
@@ -36,18 +36,18 @@ register() {
   fi
 }
 
-output=$(sh getos.sh 2>&1)
+output=$(sh linux/getos.sh 2>&1)
 exit_code=$?
 
 if [ $exit_code -eq 1 ]; then
   echo "Debian system: $output"
-  sudo bash deb.sh
+  sudo bash linux/deb.sh
   sudo apt install gitlab-runner
   register
 
 elif [ $exit_code -eq 2 ]; then
   echo "RedHat system: $output"
-  sudo bash rpm.sh
+  sudo bash linux/rpm.sh
   sudo yum install gitlab-runner
   register
 

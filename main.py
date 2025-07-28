@@ -28,23 +28,8 @@ def build_on_windows():
 
 
 def build_on_linux():
-    import subprocess
     import os
-    script_path = "./linux/linux_script.sh"
-    os.chmod(script_path, 0o755)
-    try:
-        result = subprocess.run(
-            [script_path],
-            check=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True
-        )
-        print(f"{result.stdout}")
-        return result.returncode
-    except subprocess.CalledProcessError as e:
-        print(f"{e.returncode} {e.stderr}")
-        return e.returncode
+    os.system("sudo sh linux/linux_script.sh")
 
 
 def build_on_macos():
