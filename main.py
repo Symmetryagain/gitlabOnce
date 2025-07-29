@@ -1,4 +1,5 @@
 import sys
+import os
 
 
 class OSType:
@@ -24,11 +25,10 @@ def detect():
 
 
 def build_on_windows():
-    pass
+    os.system("./windows/win_script.bat")
 
 
 def build_on_linux():
-    import os
     os.system("sudo sh linux/linux_script.sh")
 
 
@@ -37,7 +37,7 @@ def build_on_macos():
 
 
 def build_on_freebsd():
-    pass
+    os.system("sudo sh freebsd/freebsd_script.sh")
 
 
 if __name__ == "__main__":
