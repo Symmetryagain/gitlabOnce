@@ -4,11 +4,16 @@
 
 This script is based on **python**. Make sure python3 is installed in your system.
 
-Just run `python main.py` to build a gitlab runner!
+Just run `python main.py` to build a gitlab runner.
 
-## For Windows
+When you run `python main.py`, what actually happens:
 
-Only tested in Windows 10.
+- Downloading `gitlab runner` (if not exist).
+- Register a runner.
+
+## For Windows (Only tested in Windows 10)
+
+- Make sure this script runs in PowerShell with administrator privileges.
 
 ## For Linux
 
